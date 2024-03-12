@@ -31,6 +31,8 @@ app.use('/api', messageRoutes);
 
 const server = http.createServer(app);
 
+// Création d'une instance de Socket.IO et configuration des paramètres CORS
+
 const io = new Server(server, {
     cors: {
         origin: "http://localhost:5173",
@@ -38,6 +40,9 @@ const io = new Server(server, {
         credentials: false,
     } 
 });
+
+
+// Gestion des événements de connexion et de déconnexion des utilisateurs via Socket.IO
 
 io.on('connection', (socket) => {
     console.log('user connected');
